@@ -17,10 +17,13 @@ public class CassandraConnection {
     @Autowired
     public CassandraConnection(@Value("${cassandra.connection.address}") String address,
                                @Value("${cassandra.connection.keyspace}") String keyspace,
-                               @Value("${cassandra.connection.port}") int port){
+                               @Value("${cassandra.connection.port}") int port,
+                               @Value("${cassandra.connection.username}") String username,
+                               @Value("${cassandra.connection.password}") String password){
         cluster = Cluster.builder()
                 .withoutJMXReporting()
                 .addContactPoint(address)
+                .withCredentials(username, password)
                 .withPort(port)
                 .build();
         session = cluster.connect(keyspace);

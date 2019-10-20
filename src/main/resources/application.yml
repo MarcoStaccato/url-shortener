@@ -24,6 +24,8 @@ server:
 cassandra:
   connection:
     address: cassandra
+    username: cassandra
+    password: cassandra
 
 ---
 spring:
@@ -32,3 +34,10 @@ spring:
       name: URL shortener
 server:
    port: 8080
+cassandra:
+  connection:
+    address: 34.238.168.96
+    keyspace: shortener
+    port: 9042
+    username:
+    password:
