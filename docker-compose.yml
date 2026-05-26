@@ -2,7 +2,7 @@ version: '2.0'
 
 services:
   shortener:
-    image: openjdk:10-jre-slim
+    image: amazoncorretto:17.0.19
     volumes:
       - ./target/shortener-0.0.1-SNAPSHOT.jar:/usr/shortener.jar
       - ./docker/web/wait-for-cass.sh:/usr/wait-for-cass.sh
@@ -18,7 +18,6 @@ services:
     volumes:
       - cassandra-data:/var/lib/cassandra
       - cassandra-data:/home/cassandra/.cassandra
-    command: "sh /init-schema.sh"
 
 volumes:
   cassandra-data:
